@@ -428,7 +428,7 @@ class Checks(object):
         self.cur.execute(sql)
         res = self.cur.fetchall()
         for i in res:
-            print(i[0])
+            print(float(i[0]))
 
     def show_asm_volumes(self):
         """List als ASM volumes in a JSON like format for Zabbix use"""
@@ -550,7 +550,7 @@ class Main(Checks):
             if not name.startswith("_"):
                 p = subparsers.add_parser(name)
                 method = getattr(self, name)
-                argnames = inspect.getargspec(method).args[1:]
+                argnames = inspect.getfullargspec(method).args[1:]
                 for argname in argnames:
                     p.add_argument(argname)
                 p.set_defaults(func=method, argnames=argnames)
