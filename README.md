@@ -1,4 +1,4 @@
-Pyora
+zabbix_database
 =====
 
 Python script to monitor oracle
